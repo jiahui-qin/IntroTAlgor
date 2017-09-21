@@ -28,5 +28,24 @@ def partition(A, p, r):
     A[i + 1] = A[r]
     A[r] = flag2
     return i + 1
-A=[8,7,6,5]
-print(quick_sort(A, 1, 3))
+#A=[8,7,6,5,2,5,8,5,3,3]
+#print(quick_sort(A, 0, 7),'A')
+
+
+import random
+def randomized_partition(A, p, r):
+    ##快速排序的随机化版本
+    i = random.randint(p, r)
+    flag = A[r]
+    A[r] = A[i]
+    A[i] = flag
+    return partition(A, p, r)
+
+def randomized_quicksort(A, p, r):
+    if p < r:
+        q = randomized_partition(A, p, r)
+        randomized_quicksort(A, p, q - 1)
+        randomized_quicksort(A, q + 1, r)
+    return A
+
+#print(randomized_quicksort(A, 0, 9))
