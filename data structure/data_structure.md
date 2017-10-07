@@ -13,4 +13,3 @@
 * DELETE(S, x) 修改操作，给定指针x指向集合S中的一个元素，从S中删除x
 * MINIMUM/MAXIMUM(S) 查询操作，再全序集S上返回一个指向S中具有*最小/最大*关键字的元素的指针
 * SUCCESSOR/PREDECESSOR(S, x) 查询操作，返回S中比x*大/小*的下一个元素的指针
-* 
