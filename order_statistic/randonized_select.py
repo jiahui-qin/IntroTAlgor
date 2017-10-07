@@ -1,6 +1,6 @@
 import sys
 sys.path.append('F:\IntroTAlgor\sort')
-import quick_sort
+import quick_sort  ##导入另外一个文件中的函数
 A=[8,7,6,5,2,5,8,5,3,3]
 print(quick_sort.quick_sort(A, 0, 7))
 
