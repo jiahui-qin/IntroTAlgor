@@ -1,6 +1,7 @@
 ##二叉树
 ##每个节点有4个属性：p(parents)、left、right、key
-
+##这个程序还有很多可以改进的地方：自动排序、插入、删除、对象的分配和释放等等
+##有时间再完善吧
 class NODE(object):
     def __init__(self, value = -1, left = None, right = None):
         self.value = value
@@ -24,22 +25,32 @@ class Binary_tree(object):
             return True
         else:
             return False
+    def preorder(self,cho_key):
+        #先序遍历
+        #可以单独拿出来遍历某一个节点的子节点
+        if cho_key:
+            print(cho_key.value)
+            if cho_key.left:
+                self.preorder(self.key[cho_key.left])
+            if cho_key.right:
+                self.preorder(self.key[cho_key.right])
+        else:
+            return None
 
-    # def print_key(self):
-    #     if isempty(self):
-    #         return False
-    #     else:
-    #         def preorder(self.root.key()):
-    #             if self.root.key:
-    #                 print(self.root.key)
-    #                 preorder(self.root.key.left())
-    #                 preorder(self.root.key.right())
+    def print_key(self):
+        #如果树不为空再进行这个程序
+        if self.isempty():
+            return False
+        else:
+            self.preorder(self.key[self.root])
+            
 
 
-a=NODE(10,1)
-b=NODE(2)
+a=NODE(10,1,2)
+b=NODE(2,3)
+c=NODE(4)
+d=NODE(6)
 
-tree=Binary_tree([a,b],0)
-print(tree.root)
-print(type(tree.key[1]))
-print(tree.key[1].value)
+tree=Binary_tree([a,b,c,d],0)
+#print(type(tree.key[1]))
+tree.print_key()
