@@ -14,43 +14,35 @@
 除法散列法 h(k)=k modm 除以m取余
 乘法散列法 h(k)=m(kA mod 1) 向下取整   (kA mod 1)取kA的小数部分  m选择2的一个幂次， A选择 (sqrt(5)-1)/2
 """
-class hashelem(object):
-    #哈希表的一个链接
-    def __init__(self, key, word):
-        self.word = word
-        self.key = key
-
-
-class hashtabe(list):
+class hashtable(object):
     #哈希表类
+    ##这个哈希表的散列函数定为  mod k：有k列存放数据
 
-    def hashtable_init(self, k):
-        #self定义为一个长度为7的元组(比较安全，不可变)
-        #self里的链用列表表示
-        self = tuple(self.parper(k))
-        return self
-    @classmethod 
-    def parper(self, k):
-        initself = []
+    def __init__(self, k):
+        self.key = k
+        self.data = []
         for i in range(k):
-            print(i)
-            initself.append([])
-        return initself
+            self.data.append([0,])
+        tuple(self.data)  ##为什么不能初始化为一个tuple?
 
     def hash_insetrt(self, elem):
         #插入一个元素至哈希表
-        self[elem.key%7].append(elem)
+        self.data[elem%7].append(elem)
+
     
     def hash_find(self, key):
         #输入一个key，寻找这个key对应的word
+        #这里没有构造key类，寻找比较没有意义
         for i in self[key%7]:
             if i.key == key:
                 return i.word
 
-bb=hashtabe()
-bb.hashtable_init(7)
-print(bb)
+bb=hashtable(7)
+print(bb.data)
 
+bb.hash_insetrt(13)
+
+print(bb.data[6])
 print(bb[1])
 bb.hash_insetrt(hashelem(1,1))
 print(bb[1])
