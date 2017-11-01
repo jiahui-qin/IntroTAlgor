@@ -12,21 +12,21 @@ class NODE(object):
 
 class Binary_tree(object):
 
-    def __init__(self, root = None):
+    def __init__(self, root = None, queue = None):
         #这里可以使用对象的单数组表示方法
         self.queue = []  #queue这个序列就是NODE序列
         self.root = root #这个属性指向根节点
 
-    def isempty(self):
-        #检查一个树是否为空
-        ##删除掉一个节点时，虽然节点保留，但是节点的三个属性全为 -1
-        ##直接检查空节点
-        #还是检查是否有父节点存在？
-        #先写第一种
-        if self.root == -1:
-            return True
-        else:
-            return False
+    # def isempty(self):
+    #     #检查一个树是否为空
+    #     ##删除掉一个节点时，虽然节点保留，但是节点的三个属性全为 -1
+    #     ##直接检查空节点
+    #     #还是检查是否有父节点存在？
+    #     #先写第一种
+    #     if self.root == -1:
+    #         return True
+    #     else:
+    #         return False
 
     def preorder(self,cho_queue):
         #先序遍历:先输出父节点，再输出子节点
@@ -63,38 +63,42 @@ class Binary_tree(object):
             return None
 
     def tree_insert(self, node):
+        # 此二叉树具有以下性质：
+        ## 左子树中的关键字的最大值都小于父节点
+        ## 右子树中关键字的最小值都大于父节点
         self.queue.append(node)
         ##插入节点
-        if not self.root:
+        if not self.root:  #树为空的话直接插入至根节点
             self.root = node
         else:
-            y = None
-            x = self.root  
+            y = None 
+            x = self.root
             while x:
                 y = x
-                if x.left
-                    if self.queue[x.left].key < x.key:
-                        x = self.queue[x.left]
+                try:
+                    if node.key < x.key:
+                        x = self.queue[x.left] ##这是一个node类型
                     else:
-                        if x.right
-                            x = self.queue[x.right]
-        if node.key < y.key:
-                y.left = len(self) - 1
+                        x = self.queue[x.right]
+                except TypeError: #当x往下没有节点时就跳出循环
+                    break
+            if node.key < y.key:
+                y.left = len(self.queue) - 1
             else:
-                y.right = len(self) - 1
-
-
+                y.right = len(self.queue) - 1
+    def tree_search(self, key, indic = self.root):
+        #用key来搜索
+        if self.root == None:
+            return "the tree is empty"
+        if key == indic.key:
+            return indic.value
+        if key < indic.key:
+            return self.tree_search( key, indic = self.queue[indic.left])
+        else:
+            return self.tree_search( key, indic = self.queue[indic.right])
 
 
 a=NODE('wo',4)
 b=NODE('cao',3)
 c=NODE('ni',6)
 d=NODE('ma',1)
-
-tree=Binary_tree()
-tree.tree_insert(a)
-print(tree.root.value)
-tree.tree_insert(b)
-tree.tree_insert(c)
-tree.tree_insert(d)
-tree.preorder()
