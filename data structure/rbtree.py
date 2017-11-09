@@ -22,8 +22,8 @@ class Node(object):
         if not isinstance(n, Node):
             n = Node(n)
         self.nextnode = n  ##直接将nextnode指向n
-        n = self.nextnode   
-        self.nextnode.nextnode = n
+        #n = self.nextnode   
+        #self.nextnode.nextnode = n
 
 A = Node(1)
 B = Node(2)
@@ -33,3 +33,5 @@ print(B)
 print(B.value)
 print(A.nextnode)
 print(A.nextnode.value)
+print(A.nextnode.nextnode)
+print(B.nextnode)
