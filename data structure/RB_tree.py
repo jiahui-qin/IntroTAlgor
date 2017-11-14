@@ -1,12 +1,12 @@
 #红黑树
 class RbNode(object):
 
-    def __init__(self, key, color = None, left = None, right = None, p = None):
+    def __init__(self, key, color = None, left = None, right = None, parents = None):
         self.color = color
         self.key = key
         self.left = left
         self.right = right
-        self.p = p #parents        
+        self.parents = parents       
     ##再建一个类还是直接在这个类里边写？好像可以直接在这个类里边写
 
 class RbTree(object):
@@ -57,6 +57,70 @@ class RbTree(object):
         y.left = x
         x.parents = y
 
+    def right_rotate(self, y):
+        #右旋操作
+        x = y.left
+        y.left = x.right
+        if x.left !=self.Nil:
+            x.right.parents = y
+        x.parents = y.parents
+        if y.parents == self.Nil:
+            self.root = x
+        elif y == y.parents.left:
+            y.parents.left = x
+        else:
+            y.parents.right = x
+        x.right = y
+        y.parents = x
+
+    def RB_insert(self, z):
+        y = self.Nil
+        x = self.root
+        while x != self.Nil:
+            y = x
+            if z.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        z.parents = y
+        if y == self.Nil:
+            self.root = z
+        elif z.key < y.key:
+            y.left = z
+        else:
+            y.right = z
+        z.left = self.Nil
+        z.right = self.Nil
+        z.color =  'RED'
+        #self.RB_insert_fixup(z)
+    
+    def RB_insert_fixup(self,z):
+        
+
+a = RbNode(18)
+tree = RbTree()
+tree.RB_insert(a)
+b = RbNode(16)
+tree.RB_insert(b)
+print(tree.root.left.key)
+c = RbNode(15)
+tree.RB_insert(c)
+print(tree.root.left.left.key)
+d = RbNode(17)
+tree.RB_insert(d)
+print(tree.root.left.right.key)
 
 
-            
+# def main():
+#     print('dd')
+#     d = RbNode(14,'b',None,None,c)
+#     e = RbNode(19,'b',None,None,c)
+#     a = RbNode(11,'b',b,c)
+#     b = RbNode(9,'b',None,None,a)
+#     c = RbNode(18,'b',d,e,a)
+#     tree = RbTree([a,b,c,d,e],a)
+#     tree.Left_rotate(a)
+#     print(b.left.key)
+
+# if __name__ == "__name__":
+#     main()
