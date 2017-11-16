@@ -95,6 +95,8 @@ class RbTree(object):
         #self.RB_insert_fixup(z)
     
     def RB_insert_fixup(self,z):
+        while z.parents.color == 'red':
+            if z.parents 
         
 
 a = RbNode(18)
