@@ -74,6 +74,11 @@ class RbTree(object):
         y.parents = x
 
     def RB_insert(self, z):
+        #这里注意与普通二叉树的区别
+        #1. 所有的NIL都被T.nil代替
+        #2. 插入节点的子节点都链接到T.Nil
+        #3. 插入节点z的颜色为红色
+        #4. 最后调用self.RB_insert_fixup来维护树的红黑树的性质
         y = self.Nil
         x = self.root
         while x != self.Nil:
@@ -95,8 +100,26 @@ class RbTree(object):
         #self.RB_insert_fixup(z)
     
     def RB_insert_fixup(self,z):
-        while z.parents.color == 'red':
-            if z.parents 
+        while z.parents.color == 'RED':
+            if z.parents == z.parents.parents.left:#如果z的父节点是z的爷节点的左子节点
+                y = z.parents.parents.right
+                if y.color =='RED':#case1 z的叔节点是红色的话
+                    z.parents.color = 'BLACK'
+                    y.color = 'BLACK'
+                    z.parents.parents.color = 'RED'
+                    z = z.parents.parents
+                elif z == z.parents.right: #case2 z是z的父节点的右孩子
+                    z = z.parents
+                    self.Left_rotate(z)
+                z.parents.color = 'BLACK' #case3 
+                z.parents.parents.color = 'RED'
+                self.right_rotate(z.parents.parents)
+            else:pass##下次下次
+                
+
+
+
+
         
 
 a = RbNode(18)
