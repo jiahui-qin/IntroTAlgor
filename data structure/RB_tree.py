@@ -114,7 +114,8 @@ class RbTree(object):
                 z.parents.color = 'BLACK' #case3 
                 z.parents.parents.color = 'RED'
                 self.right_rotate(z.parents.parents)
-            else:pass##下次下次
+            else:##下次下次，(z.p ==z.p.p.right)
+
                 
 
 
