@@ -24,3 +24,5 @@
 
 1. string操作 string不能直接修改， string.count(str, beg = 0, end = len(string)) string.find(str, beg, end)
 
+1. 要建立一个矩阵的话可以用这个方法来建立，[[0 for col in range(n)] for row in range(n)]，除此之外numpy应该也有函数用来建立一个矩阵
+
