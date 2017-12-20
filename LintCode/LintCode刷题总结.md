@@ -22,6 +22,8 @@
 
 1. 记一下常用的list操作方法 切片 append count统计某元素出现的个数 extend用新列表扩展就列表 index在列表中找出某个值匹配的第一项 insert(index, obj) pop(obj = list[-1])默认删最后一个元素 remove(obj)删掉某个值的第一个匹配项 reverse反向 sort排序
 
+1. string操作 string不能直接修改， string.count(str, beg = 0, end = len(string)) string.find(str, beg, end)
+
 1. 要建立一个矩阵的话可以用这个方法来建立，[[0 for col in range(n)] for row in range(n)]，除此之外numpy应该也有函数用来建立一个矩阵
 
 1. 字符串常用操作方法
