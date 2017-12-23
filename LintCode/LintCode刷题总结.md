@@ -26,9 +26,4 @@
 
 1. 要建立一个矩阵的话可以用这个方法来建立，[[0 for col in range(n)] for row in range(n)]，除此之外numpy应该也有函数用来建立一个矩阵
 
-<<<<<<< HEAD
 1. Lintcode中检测null的时候很奇怪，判断类型是没有用的，直接用 if not xxx 来检测比较方便
-
-=======
-1. 字符串常用操作方法
->>>>>>> 51325851cbb065e2cd3b3c5bcb0c4d864b256472
